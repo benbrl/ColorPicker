@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    padding: 5vmin;
+}
+
+h2 {
+    padding: 2vmin;
+}
+
+p {
+    margin: 1vmin 0;
+}
+
+p:first-of-type, p:last-of-type {
+    margin: 2vmin 0;
+}
+
+h1,
+h2,
+p {
+    text-align: center;
+}
+
+section {
+    width: 50vw;
+    margin: auto;
+}
+
+.error,
+.part,
+.success {
+    border-radius: .5rem;
+    padding: 1vmin;
+}
+
+.error {
+    color: red;
+    background-color: lightpink;
+}
+
+.part {
+    color: orange;
+    background-color: lightyellow;
+}
+
+.success {
+    color: green;
+    background-color: lightgreen;
+}
+
+.check,
+.cross {
+    font-weight: bolder;
+}
+
+.check {
+    color: yellowgreen;
+}
+
+.cross {
+    color: red;
+}

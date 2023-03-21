@@ -1,0 +1,18 @@
+window.addEventListener('load', () => {
+    document.querySelectorAll('fieldset').forEach(
+        (fieldset) => {
+            fieldset.setAttribute('disabled','disabled')
+        }
+    )
+});
+
+document.querySelector('body>button').addEventListener('click', () => {
+        document.querySelectorAll('fieldset').forEach(
+            (fieldset) => {
+                fieldset.removeAttribute('disabled')
+            }
+        )
+});
+
+
+
