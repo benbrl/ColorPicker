@@ -204,8 +204,10 @@ function action2(e) {
     const positionSouris = (((Ysouris - arcTop) / arcH) * 100);
     // console.log(positionSouris);
     taquet.style.top = `${positionSouris}%`;
-    hsl[0] = (100 - positionSouris);
+    hsl[0] = ((100 - positionSouris)*3.6);
     apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
+    nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
+    
 }
 
 arc.addEventListener('click', action2);
@@ -237,6 +239,7 @@ function action3(e) {
     hsl[1] = (100 - positionSourisNuanceTop);
     hsl[2] = positionSourisNuanceLeft;
     apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
+    
 }
 nuance.addEventListener('click', action3);
 
