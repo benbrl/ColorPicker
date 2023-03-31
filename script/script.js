@@ -158,25 +158,57 @@ console.log(`linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla($
 nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
 
 
+
+// Taquet
+
 const arc = document.querySelector('.arc-en-ciel');
 
 function action2(e) {
     // console.log(e);
     let Ysouris = e.clientY;
-    console.log(Ysouris);
-    const dimensions = arc.getBoundingClientRect();
-    // console.log(dimensions);
-    const arcTop = dimensions.top;
-    const arcH = dimensions.height;
-    console.log(arcTop);
-    console.log(arcH);
+    // console.log(Ysouris);
+    const dimensionsArc = arc.getBoundingClientRect();
+    // console.log(dimensionsArc);
+    const arcTop = dimensionsArc.top;
+    const arcH = dimensionsArc.height;
+    // console.log(arcTop);
+    // console.log(arcH);
     const positionSouris = (((Ysouris - arcTop) / arcH) * 100 );
-    console.log(positionSouris);
+ //console.log(positionSouris);
     taquet.style.top = `${positionSouris}%`;
-
 } 
 
 arc.addEventListener('click', action2);
+
+
+// Loupe
+
+const nuance = document.querySelector('.nuance');
+
+function action3(e){
+    let YsourisNuance = e.clientY;
+    let XsourisNuance = e.clientX;
+    // console.log(YsourisNuance);
+    // console.log(XsourisNuance);
+    const dimensionsNuance = nuance.getBoundingClientRect();
+    // console.log(dimensionsNuance);
+    const nuanceTop = dimensionsNuance.top;
+    const nuanceLeft = dimensionsNuance.left;
+    const nuanceH = dimensionsNuance.height;
+    const nuanceW = dimensionsNuance.width;
+    // console.log(nuanceTop);
+    // console.log(nuanceH);
+    // console.log(nuanceW);
+    const positionSourisNuanceTop = (((YsourisNuance - nuanceTop) / nuanceH) * 100 );
+    loupe.style.top = `${positionSourisNuanceTop}%`;
+    // console.log(positionSourisNuanceTop);
+    const positionSourisNuanceLeft = (((XsourisNuance - nuanceLeft) / nuanceW) * 100);
+    // console.log(positionSourisNuanceLeft);
+    loupe.style.left = `${positionSourisNuanceLeft}%`;
+}
+nuance.addEventListener('click', action3);
+
+
 
 function init() { };
 
