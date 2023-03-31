@@ -191,6 +191,40 @@ nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 
 
 const arc = document.querySelector('.arc-en-ciel');
 
+let statutTaquet = false;
+let positionSouris = 0;
+
+arc.addEventListener('mouseup', e => {
+    statutTaquet = false;
+});
+
+arc.addEventListener('mousedown', e => {
+    statutTaquet = true;
+    positionSouris = e.clientY - arc.getBoundingClientRect().top;
+});
+
+arc.addEventListener('mousemove', e => {
+    if (statutTaquet) {
+        // console.log(e);
+        const Ysouris = e.clientY;
+        // console.log(Ysouris);
+        const dimensionsArc = arc.getBoundingClientRect();
+        // console.log(dimensionsArc);
+        const arcTop = dimensionsArc.top;
+        const arcH = dimensionsArc.height;
+        // console.log(arcTop);
+        // console.log(arcH);
+        const positionSouris = (((Ysouris - arcTop) / arcH) * 100);
+        // console.log(positionSouris);
+        taquet.style.top = `${positionSouris}%`;
+        hsl[0] = ((100 - positionSouris) * 3.6);
+        apercu.style.backgroundColor = HSLToHex(hsl[0], hsl[1], hsl[2]);
+        nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
+        value.value = HSLToHex(hsl[0], hsl[1], hsl[2]);
+    }
+});
+
+
 function action2(e) {
     // console.log(e);
     const Ysouris = e.clientY;
@@ -204,17 +238,70 @@ function action2(e) {
     const positionSouris = (((Ysouris - arcTop) / arcH) * 100);
     // console.log(positionSouris);
     taquet.style.top = `${positionSouris}%`;
-    hsl[0] = ((100 - positionSouris)*3.6);
-    apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
+    hsl[0] = ((100 - positionSouris) * 3.6);
+    apercu.style.backgroundColor = HSLToHex(hsl[0], hsl[1], hsl[2]);
     nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
-    value.value = HSLToHex(hsl[0],hsl[1],hsl[2]);
+    value.value = HSLToHex(hsl[0], hsl[1], hsl[2]);
 }
+
 
 arc.addEventListener('click', action2);
 
+
+
+
+
+
+
 // Loupe
 
+
+
 const nuance = document.querySelector('.nuance');
+
+
+let statutLoupe = false;
+let positionSourisLoupe = 0;
+
+nuance.addEventListener('mouseup', e => {
+    statutTaquet = false;
+});
+
+nuance.addEventListener('mousedown', e => {
+    statutTaquet = true;
+    positionSourisLoupe = e.clientY - arc.getBoundingClientRect().top;
+});
+
+nuance.addEventListener('mousemove', e => {
+    if (statutTaquet) {
+        const YsourisNuance = e.clientY;
+        const XsourisNuance = e.clientX;
+        // console.log(YsourisNuance);
+        // console.log(XsourisNuance);
+        const dimensionsNuance = nuance.getBoundingClientRect();
+        // console.log(dimensionsNuance);
+        const nuanceTop = dimensionsNuance.top;
+        const nuanceLeft = dimensionsNuance.left;
+        const nuanceH = dimensionsNuance.height;
+        const nuanceW = dimensionsNuance.width;
+        // console.log(nuanceTop);
+        // console.log(nuanceH);
+        // console.log(nuanceW);
+        const positionSourisNuanceTop = (((YsourisNuance - nuanceTop) / nuanceH) * 100);
+        loupe.style.top = `${positionSourisNuanceTop}%`;
+        //  console.log(positionSourisNuanceTop);
+        const positionSourisNuanceLeft = (((XsourisNuance - nuanceLeft) / nuanceW) * 100);
+        // console.log(positionSourisNuanceLeft);
+        loupe.style.left = `${positionSourisNuanceLeft}%`;
+        hsl[1] = positionSourisNuanceLeft;
+        console.log(hsl[1]);
+        hsl[2] = (100 - positionSourisNuanceTop);
+        console.log(hsl[2]);
+        apercu.style.backgroundColor = HSLToHex(hsl[0], hsl[1], hsl[2]);
+        value.value = HSLToHex(hsl[0], hsl[1], hsl[2]);
+    }
+});
+
 
 function action3(e) {
     const YsourisNuance = e.clientY;
@@ -240,8 +327,8 @@ function action3(e) {
     console.log(hsl[1]);
     hsl[2] = (100 - positionSourisNuanceTop);
     console.log(hsl[2]);
-    apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
-    value.value = HSLToHex(hsl[0],hsl[1],hsl[2]);
+    apercu.style.backgroundColor = HSLToHex(hsl[0], hsl[1], hsl[2]);
+    value.value = HSLToHex(hsl[0], hsl[1], hsl[2]);
 }
 nuance.addEventListener('click', action3);
 
