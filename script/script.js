@@ -162,7 +162,7 @@ btnCroix.addEventListener('click', close);
 
 // couleurs
 
-const { value } = document.querySelector('input[name = couleur]');
+const value = document.querySelector('input[name = couleur]');
 const hsl = hexToHSL(value);
 const couleur = document.querySelector('.couleur');
 console.log(value);
@@ -207,7 +207,7 @@ function action2(e) {
     hsl[0] = ((100 - positionSouris)*3.6);
     apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
     nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
-    
+    value.value = HSLToHex(hsl[0],hsl[1],hsl[2]);
 }
 
 arc.addEventListener('click', action2);
@@ -236,10 +236,12 @@ function action3(e) {
     const positionSourisNuanceLeft = (((XsourisNuance - nuanceLeft) / nuanceW) * 100);
     // console.log(positionSourisNuanceLeft);
     loupe.style.left = `${positionSourisNuanceLeft}%`;
-    hsl[1] = (100 - positionSourisNuanceTop);
-    hsl[2] = positionSourisNuanceLeft;
+    hsl[1] = positionSourisNuanceLeft;
+    console.log(hsl[1]);
+    hsl[2] = (100 - positionSourisNuanceTop);
+    console.log(hsl[2]);
     apercu.style.backgroundColor = HSLToHex(hsl[0],hsl[1],hsl[2]);
-    
+    value.value = HSLToHex(hsl[0],hsl[1],hsl[2]);
 }
 nuance.addEventListener('click', action3);
 
