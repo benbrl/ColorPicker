@@ -196,7 +196,15 @@ label[for=champ-couleur] {
 
 .arc-en-ciel {
     /* background: linear-gradient(to top, black, white); */
-    background: linear-gradient(to top, red, orange, yellow, green, blue, indigo, violet);
+    background: linear-gradient(hsl(360, 100%, 50%),
+            hsl(315, 100%, 50%),
+            hsl(270, 100%, 50%),
+            hsl(225, 100%, 50%),
+            hsl(180, 100%, 50%),
+            hsl(135, 100%, 50%),
+            hsl(90, 100%, 50%),
+            hsl(45, 100%, 50%),
+            hsl(0, 100%, 50%));
     grid-column: 1/2;
     grid-row: 2/3;
     border: 1px solid black;

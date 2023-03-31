@@ -134,6 +134,49 @@ const couleur = document.querySelector('.couleur');
 console.log(value);
 console.log(hsl);
 
-couleur.style.background = `linear-gradient(to left, hsla(${hsl[0]}, ${hsl[1]}, ${hsl[2]},1), hsla(${hsl[0]}, ${hsl[1]}, ${hsl[2]},0))`;
+
+let toph = ((360 - hsl[0]) / 3.6);
+console.log(toph);
+const taquet = document.querySelector('.taquet');
+taquet.style.top = `${toph}%`;
+
+
+const loupe = document.querySelector('.loupe');
+let topl = (100 - hsl[2]);
+let lefts = hsl[1];
+
+loupe.style.top = `${topl}%`;
+loupe.style.left = `${lefts}%`;
+
+
+const apercu = document.querySelector('.apercu');
+apercu.style.backgroundColor = value;
+
+
+const nuance2 = document.querySelector('.nuance2');
+console.log(`linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0));`);
+nuance2.style.background = `linear-gradient(to left, hsla( ${hsl[0]}deg , 100%, 50%, 1), hsla(${hsl[0]}deg, 100%, 50%, 0))`;
+
+
+const arc = document.querySelector('.arc-en-ciel');
+
+function action2(e) {
+    // console.log(e);
+    let Ysouris = e.clientY;
+    console.log(Ysouris);
+    const dimensions = arc.getBoundingClientRect();
+    // console.log(dimensions);
+    const arcTop = dimensions.top;
+    const arcH = dimensions.height;
+    console.log(arcTop);
+    console.log(arcH);
+    const positionSouris = (((Ysouris - arcTop) / arcH) * 100 );
+    console.log(positionSouris);
+    taquet.style.top = `${positionSouris}%`;
+
+} 
+
+arc.addEventListener('click', action2);
+
 function init() { };
 
